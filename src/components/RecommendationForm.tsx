@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { getAvailableOptions } from "@/utils/recommendationEngine";
+import { getAvailableOptions, formatIndianRupees } from "@/utils/recommendationEngine";
 import { CheckedState } from "@radix-ui/react-checkbox";
 
 interface RecommendationFormProps {
@@ -17,7 +17,7 @@ interface RecommendationFormProps {
 }
 
 const RecommendationForm = ({ onSubmit }: RecommendationFormProps) => {
-  const [budget, setBudget] = useState<number>(50000);
+  const [budget, setBudget] = useState<number>(2000000); // Default 20 Lakh budget
   const [selectedBodyTypes, setSelectedBodyTypes] = useState<string[]>([]);
   const [selectedFuelTypes, setSelectedFuelTypes] = useState<string[]>([]);
   const [selectedTransmissions, setSelectedTransmissions] = useState<string[]>([]);
@@ -102,18 +102,18 @@ const RecommendationForm = ({ onSubmit }: RecommendationFormProps) => {
 
                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                   <div className="sm:col-span-6">
-                    <Label htmlFor="budget">Budget (Max $100,000)</Label>
+                    <Label htmlFor="budget">Budget (Max ₹2 Crore)</Label>
                     <div className="mt-2 flex items-center">
                       <Slider 
                         id="budget"
                         defaultValue={[budget]}
-                        max={100000}
-                        step={1000}
+                        max={20000000} // 2 Crore
+                        step={100000} // 1 Lakh steps
                         onValueChange={(value) => setBudget(value[0])}
                         className="flex-1 mr-4"
                       />
-                      <span className="text-gray-900 font-medium">
-                        ${budget.toLocaleString()}
+                      <span className="text-gray-900 font-medium min-w-[120px] text-right">
+                        {formatIndianRupees(budget)}
                       </span>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ const RecommendationForm = ({ onSubmit }: RecommendationFormProps) => {
                   type="button"
                   variant="outline"
                   onClick={() => {
-                    setBudget(50000);
+                    setBudget(2000000);
                     setSelectedBodyTypes([]);
                     setSelectedFuelTypes([]);
                     setSelectedTransmissions([]);

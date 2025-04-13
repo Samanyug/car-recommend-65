@@ -2,7 +2,7 @@
 import { cars, CarType } from '../data/carData';
 
 export interface UserPreferences {
-  budget: number;
+  budget: number; // Budget in rupees
   bodyType: string[];
   fuelType: string[];
   transmission: string[];
@@ -57,4 +57,17 @@ export const getAvailableOptions = () => {
     fuelTypes,
     transmissionTypes
   };
+};
+
+// Format price in Indian rupees with appropriate suffixes
+export const formatIndianRupees = (price: number): string => {
+  if (price >= 10000000) {
+    return `₹${(price / 10000000).toFixed(2)} Cr`;
+  } else if (price >= 100000) {
+    return `₹${(price / 100000).toFixed(2)} Lakh`;
+  } else if (price >= 1000) {
+    return `₹${(price / 1000).toFixed(2)} K`;
+  } else {
+    return `₹${price}`;
+  }
 };

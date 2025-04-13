@@ -2,6 +2,7 @@
 import { Badge } from "@/components/ui/badge";
 import { CarType } from "@/data/carData";
 import { Card } from "@/components/ui/card";
+import { formatIndianRupees } from "@/utils/recommendationEngine";
 
 interface CarCardProps {
   car: CarType;
@@ -29,7 +30,7 @@ const CarCard = ({ car }: CarCardProps) => {
               {car.brand} {car.name}
             </h3>
             <p className="text-automotive-blue font-bold text-lg">
-              ${car.price.toLocaleString()}
+              {formatIndianRupees(car.price)}
             </p>
           </div>
           <Badge variant="outline" className="text-automotive-gray border-automotive-gray">
