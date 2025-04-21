@@ -1,5 +1,4 @@
-
-import { Toast, ToastActionElement, ToastProps } from "@/components/ui/toast"
+import { ToastProps, ToastActionElement } from "@/components/ui/toast"
 import {
   useEffect,
   useState,
@@ -8,12 +7,12 @@ import {
 const TOAST_LIMIT = 5
 const TOAST_REMOVE_DELAY = 1000000
 
-type ToasterToast = Toast & {
+type ToasterToast = {
   id: string
   title?: React.ReactNode
   description?: React.ReactNode
   action?: ToastActionElement
-}
+} & ToastProps
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",

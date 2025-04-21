@@ -1,73 +1,105 @@
-# Welcome to your Lovable project
 
-## Project info
+# Car Finder India 🚗
 
-**URL**: https://lovable.dev/projects/dada94ac-3672-45f9-8534-f4c127dd7342
+A modern web application to help users find their perfect car match in India based on their preferences, budget, and requirements.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Advanced Car Search**: Filter cars by:
+  - Budget (with Indian currency formatting)
+  - Body Type (SUV, Sedan, Hatchback, etc.)
+  - Fuel Type (Petrol, Diesel, Electric, CNG, Hybrid)
+  - Transmission Type (Manual, Automatic, AMT, CVT, DCT)
+- **Smart Recommendations**: Get personalized car suggestions based on your preferences
+- **Interactive UI**: Modern, responsive interface with real-time updates
+- **Indian Market Focus**: Curated database of cars available in India with prices in INR
 
-**Use Lovable**
+## Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/dada94ac-3672-45f9-8534-f4c127dd7342) and start prompting.
+- **Frontend**: React + TypeScript
+- **UI Components**: 
+  - Shadcn/ui for consistent, accessible components
+  - Tailwind CSS for styling
+  - Lucide React for icons
+- **State Management**: React Query for efficient data handling
+- **Build Tool**: Vite
+- **Animations**: Tailwind CSS animations
 
-Changes made via Lovable will be committed automatically to this repo.
+## Local Development
 
-**Use your preferred IDE**
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd car-finder-india
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. Install dependencies:
+```bash
+npm install
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/         # UI components
+│   ├── ui/            # Shadcn UI components
+│   ├── CarCard.tsx    # Car display component
+│   └── ...
+├── data/              # Data sources
+│   └── carData.ts     # Car database
+├── hooks/             # Custom React hooks
+├── pages/             # Page components
+├── utils/             # Utility functions
+└── App.tsx            # Root component
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Key Features Implementation
 
-## What technologies are used for this project?
+### Car Recommendation Engine
 
-This project is built with:
+The recommendation engine in `utils/recommendationEngine.ts` uses multiple criteria to match cars:
+- Budget matching (with 10% flexibility)
+- Body type preferences
+- Fuel type preferences
+- Transmission preferences
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Price Formatting
 
-## How can I deploy this project?
+Prices are formatted in Indian currency notation (Lakhs, Crores) for better readability:
+```typescript
+₹10.5 Lakh
+₹1.2 Cr
+```
 
-Simply open [Lovable](https://lovable.dev/projects/dada94ac-3672-45f9-8534-f4c127dd7342) and click on Share -> Publish.
+### Responsive Design
 
-## Can I connect a custom domain to my Lovable project?
+The application is fully responsive and works well on:
+- Desktop computers
+- Tablets
+- Mobile phones
 
-Yes, you can!
+## Contributing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
+
+## Acknowledgments
+
+- Icons provided by [Lucide Icons](https://lucide.dev)
+- UI components by [shadcn/ui](https://ui.shadcn.com)
+- Built with [Vite](https://vitejs.dev)
